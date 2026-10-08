@@ -6,7 +6,6 @@
 
 <p>
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
-<img src="https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white" alt="Scikit-learn">
 <img src="https://img.shields.io/badge/SDAIA-Academy-008C87?style=flat-square" alt="SDAIA Academy">
 
 </p>
