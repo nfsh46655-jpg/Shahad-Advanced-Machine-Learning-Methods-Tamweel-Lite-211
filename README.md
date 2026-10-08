@@ -1051,13 +1051,7 @@ Potential future work includes:
 
 ---
 
-## Training Program and Acknowledgments
-
-This project was developed as part of **SDA-DSC-211 — Advanced Machine Learning Methods**, associated with **SDAIA Academy**.
-
-**Training Organization:** [Saudi Data & Artificial Intelligence Authority (SDAIA)](https://sdaia.gov.sa/)
-
-**Training Program:** [Advanced Machine Learning Methods — SDA-DSC-211](https://almiyead-rgb.github.io/advanced-machine-learning-methods-sda-dsc-211/#start)
+Training-program reference: [SDAIA Academy on GitHub](https://github.com/SDAIAAcademy).
 
 **SDAIA Academy Course Materials on GitHub:** [Course Materials](https://github.com/almiyead-rgb)
 
