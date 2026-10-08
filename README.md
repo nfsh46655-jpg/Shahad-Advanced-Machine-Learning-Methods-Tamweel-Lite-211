@@ -1,146 +1,151 @@
 
-<h1 align="center">Tamweel Lite</h1>
-<h3 align="center">Explainable Credit-Risk Decision Support</h3>
+<div align="center">
 
-<p align="center">
-  An end-to-end, leakage-aware machine-learning project for predicting synthetic 90-day financing default risk, balancing error costs against human-review capacity, and producing explainable, auditable decisions.
+<h1>Advanced Machine Learning Methods-Tamweel Lite</h1>
+
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Machine%20Learning-6C63FF?style=flat-square" alt="Machine Learning">
+  <img src="https://img.shields.io/badge/SDAIA%20Academy-008C87?style=flat-square" alt="SDAIA Academy">
 </p>
 
-<p align="center">
-  <strong>Developer:</strong> Shahad Mamdouh Abu Shaheen
-  <br>
-  <strong>Project type:</strong> Individual Machine Learning Capstone
-  <br>
-  <strong>Training:</strong> SDA-DSC-211 | Advanced Machine Learning Methods
-  <br>
-  <strong>Organization:</strong> SDAIA Academy
-</p>
-
-<p align="center">
+<p>
   <a href="https://colab.research.google.com/drive/1Cw8_A6PngwrjMEweEB4MoIC0d07aF6wV?usp=sharing">
-    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab">
   </a>
 </p>
 
-<p align="center">
-  <a href="https://github.com/nfsh46655-jpg/Shahad-Advanced-Machine-Learning-Methods-Tamweel-Lite-211">GitHub Repository</a>
-  |
+<p>
   <a href="https://almiyead-rgb.github.io/advanced-machine-learning-methods-sda-dsc-211/#start">Training Program</a>
+  &nbsp; | &nbsp;
+  <a href="https://github.com/nfsh46655-jpg/Shahad-Advanced-Machine-Learning-Methods-Tamweel-Lite-211">GitHub Repository</a>
 </p>
+
+<p>
+  <strong>Shahad Mamdouh Abu Shaheen</strong>
+  <br>
+  SDA-DSC-211 | SDAIA Academy
+</p>
+
+</div>
 
 <hr>
 
-<h2>Project Overview</h2>
+<h2>01. Project Overview</h2>
 
 <p>
-Tamweel Lite is a machine-learning project designed to simulate a financing risk-assessment workflow. The system estimates the likelihood of a synthetic applicant experiencing a default event within 90 days of submitting a financing application.
+<strong>Tamweel Lite</strong> is an end-to-end machine learning project that investigates the prediction of financing default risk within 90 days of an application. The project uses synthetic financing data to develop, evaluate, interpret, and compare machine learning models under realistic validation and operational constraints.
 </p>
 
 <p>
-The model produces risk scores that help prioritize applications for human review. It does not automatically approve or reject financing applications.
+The workflow extends beyond model training by addressing temporal leakage, repeated-customer overlap, class imbalance, asymmetric classification costs, probability calibration, and limited review capacity. The resulting risk scores are intended to prioritize applications for human review rather than automatically approve or reject financing requests.
 </p>
 
-<p>
-I developed and evaluated multiple machine-learning approaches, focusing on reliable validation, data leakage prevention, class imbalance, cost-sensitive decisions, model interpretability, probability calibration, and reproducibility.
-</p>
-
-<h2>Project Objectives</h2>
-
-<ul>
-  <li>Compare Logistic Regression, XGBoost, and LightGBM.</li>
-  <li>Prevent temporal data leakage and repeated-customer overlap.</li>
-  <li>Apply time-based validation and hyperparameter optimization.</li>
-  <li>Address class imbalance and evaluate cost-sensitive decision policies.</li>
-  <li>Optimize review thresholds under a 12% capacity constraint.</li>
-  <li>Interpret predictions using SHAP and Permutation Importance.</li>
-  <li>Evaluate probability calibration and temporal stability.</li>
-  <li>Compare individual models with Averaging and Stacking ensembles.</li>
-  <li>Select and justify a final model using quantitative evidence.</li>
-  <li>Generate reproducible predictions for the final challenge.</li>
-</ul>
-
-<hr>
-
-<h2>Key Results</h2>
+<h3>Project Summary</h3>
 
 <table>
   <tr>
-    <th>Metric / Outcome</th>
-    <th>Result</th>
+    <th>Component</th>
+    <th>Details</th>
+  </tr>
+  <tr>
+    <td>Dataset</td>
+    <td>10,000 synthetic financing applications</td>
+  </tr>
+  <tr>
+    <td>Prediction Target</td>
+    <td>Default within 90 days</td>
+  </tr>
+  <tr>
+    <td>Models</td>
+    <td>Logistic Regression, XGBoost, LightGBM, Averaging, Stacking</td>
   </tr>
   <tr>
     <td>Final Selected Model</td>
     <td><strong>Logistic Regression</strong></td>
   </tr>
   <tr>
-    <td>Mean Out-of-Fold Average Precision</td>
+    <td>Mean OOF Average Precision</td>
     <td><strong>0.39166</strong></td>
   </tr>
   <tr>
-    <td>OOF AP Standard Deviation</td>
-    <td>0.02981</td>
-  </tr>
-  <tr>
-    <td>Mean OOF Brier Score</td>
-    <td>0.06327</td>
-  </tr>
-  <tr>
-    <td>OOF Decision Threshold</td>
-    <td>0.16892</td>
-  </tr>
-  <tr>
-    <td>Final Transported Threshold</td>
-    <td>0.1222584314</td>
-  </tr>
-  <tr>
     <td>Maximum Review Capacity</td>
-    <td>12%</td>
-  </tr>
-  <tr>
-    <td>Challenge Applications</td>
-    <td>2,500</td>
-  </tr>
-  <tr>
-    <td>Applications Selected for Review</td>
-    <td>300</td>
+    <td>12% per period</td>
   </tr>
 </table>
 
-<p>
-<strong>Final model decision:</strong> I selected Logistic Regression after comparing individual models and ensemble approaches across three forward validation periods. It achieved the highest mean out-of-fold Average Precision of 0.39166 among the evaluated candidates.
-</p>
+<h3>Project Objectives</h3>
 
-<p>
-Although XGBoost performed best during the initial baseline comparison, the final model selection was based on a different, more extensive validation protocol. These results should not be interpreted as a direct before-and-after performance improvement.
-</p>
+<ul>
+  <li>Explore and prepare synthetic financing application data.</li>
+  <li>Establish baseline models and compare gradient-boosting algorithms.</li>
+  <li>Implement leakage-safe temporal and customer-aware validation.</li>
+  <li>Evaluate hyperparameter optimization and class-imbalance strategies.</li>
+  <li>Develop cost-sensitive decision policies under review-capacity constraints.</li>
+  <li>Interpret predictions using SHAP and permutation importance.</li>
+  <li>Assess probability calibration and operational stability.</li>
+  <li>Compare individual models with averaging and stacking ensembles.</li>
+  <li>Select a final model and generate challenge predictions.</li>
+</ul>
 
 <hr>
 
-<h2>Technical Workflow</h2>
+<h2>02. Project Workflow</h2>
+
+<table>
+  <tr>
+    <th>Lab</th>
+    <th>Focus</th>
+    <th>Techniques</th>
+  </tr>
+  <tr>
+    <td><strong>01</strong></td>
+    <td>Baseline &amp; Boosting</td>
+    <td>Logistic Regression, XGBoost, LightGBM</td>
+  </tr>
+  <tr>
+    <td><strong>02</strong></td>
+    <td>Validation &amp; Tuning</td>
+    <td>Forward Validation, Leakage Prevention, Optuna</td>
+  </tr>
+  <tr>
+    <td><strong>03</strong></td>
+    <td>Cost-Sensitive Decisions</td>
+    <td>Class Imbalance, Error Costs, Capacity Constraints</td>
+  </tr>
+  <tr>
+    <td><strong>04</strong></td>
+    <td>Explainability &amp; Calibration</td>
+    <td>SHAP, Permutation Importance, Sigmoid Calibration</td>
+  </tr>
+  <tr>
+    <td><strong>05</strong></td>
+    <td>Final Model &amp; Challenge</td>
+    <td>Model Selection, Averaging, Stacking, Challenge Predictions</td>
+  </tr>
+</table>
+
+<hr>
+
+<h2>03. Experimental Development</h2>
+
+<h3>Lab 01 — Baseline Models &amp; Boosting</h3>
 
 <p>
-I organized the project into five practical labs, progressing from baseline model development to leakage-safe validation, cost-sensitive decisions, interpretability, calibration, and final model selection.
+<strong>Objective:</strong> Establish a baseline for financing default prediction and evaluate whether gradient-boosting methods improve predictive performance.
 </p>
 
-<h2>Lab 01 — Baseline Models and Boosting</h2>
+<h4>Implementation</h4>
 
 <p>
-  <a href="https://colab.research.google.com/github/nfsh46655-jpg/Shahad-Advanced-Machine-Learning-Methods-Tamweel-Lite-211/blob/main/notebooks/01_baseline_boosting.ipynb">
-    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open Lab 1 in Colab">
-  </a>
-</p>
-
-<h3>What I Did</h3>
-
-<p>
-I began by exploring the synthetic financing dataset, examining the target distribution, missing values, and available predictors. I prepared a Logistic Regression baseline and compared it against XGBoost and LightGBM with early stopping.
+I began by examining the synthetic dataset, reviewing the distribution of the target variable, identifying missing values, and preparing the predictors for machine learning. I trained a Logistic Regression baseline and compared it against XGBoost and LightGBM.
 </p>
 
 <p>
-The dataset contained 10,000 synthetic financing applications, 22 predictors, a default rate of 7.89%, and 766 missing cells.
+The dataset contained 10,000 applications, 22 predictor variables, a default rate of 7.89%, and 766 missing cells.
 </p>
 
-<h3>Model Comparison</h3>
+<h4>Model Comparison</h4>
 
 <table>
   <tr>
@@ -150,11 +155,11 @@ The dataset contained 10,000 synthetic financing applications, 22 predictors, a 
   </tr>
   <tr>
     <td>Logistic Regression</td>
-    <td>0.8213</td>
+    <td><strong>0.8213</strong></td>
     <td>0.3258</td>
   </tr>
   <tr>
-    <td><strong>XGBoost</strong></td>
+    <td>XGBoost</td>
     <td>0.8124</td>
     <td><strong>0.3338</strong></td>
   </tr>
@@ -165,63 +170,59 @@ The dataset contained 10,000 synthetic financing applications, 22 predictors, a 
   </tr>
 </table>
 
+<h4>Results &amp; Interpretation</h4>
+
 <p>
-<strong>Finding:</strong> XGBoost achieved the highest Average Precision in the initial comparison. However, this was a preliminary result rather than the final model decision.
+XGBoost achieved the highest Average Precision of 0.3338 in the initial experiment, while Logistic Regression achieved the highest ROC-AUC of 0.8213.
 </p>
 
 <p>
-The initial educational comparison was not fully customer-disjoint. I addressed this limitation through stricter validation in Lab 2.
+These findings showed that model rankings can differ depending on the evaluation metric. Because the initial educational comparison was not fully customer-disjoint, its results were treated as preliminary rather than as the final model-selection evidence.
 </p>
 
 <p align="center">
-  <img src="assets/lab1_model_comparison.png" alt="Lab 1 Model Comparison" width="850">
+  <img src="assets/lab1_model_comparison.png" alt="Lab 1 model comparison" width="780">
 </p>
 
 <hr>
 
-<h2>Lab 02 — Leakage-Safe Validation and Hyperparameter Tuning</h2>
+<h3>Lab 02 — Leakage-Safe Validation &amp; Tuning</h3>
 
 <p>
-  <a href="https://colab.research.google.com/github/nfsh46655-jpg/Shahad-Advanced-Machine-Learning-Methods-Tamweel-Lite-211/blob/main/notebooks/02_validation_tuning.ipynb">
-    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open Lab 2 in Colab">
-  </a>
+<strong>Objective:</strong> Design a reliable evaluation framework that respects application chronology, prevents target leakage, and controls repeated-customer overlap.
 </p>
 
-<h3>What I Did</h3>
+<h4>Implementation</h4>
 
 <p>
-I investigated how data leakage and validation design can affect model performance. I audited feature availability, separated customers across data roles, respected the 90-day target maturation window, and constructed three forward-in-time validation folds.
-</p>
-
-<p>
-I compared deliberately unsafe random and leaky validation controls against a more reliable time-based and customer-aware approach.
+I audited feature availability, incorporated the 90-day target-maturation requirement, separated customers across data roles, and constructed three forward-in-time validation folds.
 </p>
 
 <p>
-I also performed a bounded Optuna hyperparameter search with eight completed trials.
+I compared deliberately unsafe random and leaky validation controls with clean time-based and customer-aware validation. I also evaluated hyperparameter optimization using eight completed Optuna trials.
 </p>
 
-<h3>Validation Results</h3>
+<h4>Validation Comparison</h4>
 
 <table>
   <tr>
     <th>Validation Strategy</th>
-    <th>Mean ROC-AUC</th>
-    <th>Mean AP</th>
+    <th>ROC-AUC</th>
+    <th>Average Precision</th>
   </tr>
   <tr>
-    <td>Leaky Random Control (Unsafe)</td>
+    <td>Leaky Random Control — Unsafe</td>
     <td>0.9999</td>
     <td>0.9988</td>
   </tr>
   <tr>
-    <td>Clean Random Control (Unsafe)</td>
+    <td>Clean Random Control — Unsafe for Intended Use</td>
     <td>0.8010</td>
     <td>0.3110</td>
   </tr>
   <tr>
     <td>Clean Time/Group — Fixed</td>
-    <td>0.7976</td>
+    <td><strong>0.7976</strong></td>
     <td><strong>0.3153</strong></td>
   </tr>
   <tr>
@@ -231,49 +232,43 @@ I also performed a bounded Optuna hyperparameter search with eight completed tri
   </tr>
 </table>
 
+<h4>Results &amp; Interpretation</h4>
+
 <p>
-The honest outer validation covered 5,039 eligible applications, while 4,961 warm-up rows did not receive outer out-of-fold predictions.
+The deliberately leaky control produced unrealistically high scores, demonstrating how invalid validation procedures can exaggerate performance.
 </p>
 
 <p>
-<strong>Finding:</strong> The deliberately leaky validation produced unrealistically high scores. The fixed configuration also slightly outperformed the tuned configuration on mean Average Precision, showing that tuning does not automatically improve generalization.
+The clean fixed configuration slightly outperformed the tuned configuration in Average Precision. This indicated that hyperparameter tuning did not improve generalization in this experiment.
+</p>
+
+<p>
+The honest outer validation generated predictions for 5,039 eligible applications, while 4,961 warm-up rows did not receive outer out-of-fold predictions.
 </p>
 
 <p align="center">
-  <img src="assets/lab2_validation_comparison.png" alt="Lab 2 Validation Results" width="850">
+  <img src="assets/lab2_validation_comparison.png" alt="Lab 2 validation comparison" width="780">
 </p>
 
 <hr>
 
-<h2>Lab 03 — Cost-Sensitive Decision Making</h2>
+<h3>Lab 03 — Cost-Sensitive Decision Making</h3>
 
 <p>
-  <a href="https://colab.research.google.com/github/nfsh46655-jpg/Shahad-Advanced-Machine-Learning-Methods-Tamweel-Lite-211/blob/main/notebooks/03_cost_sensitive_decision.ipynb">
-    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open Lab 3 in Colab">
-  </a>
+<strong>Objective:</strong> Convert predictive risk scores into review decisions while balancing classification errors, asymmetric costs, and operational capacity.
 </p>
 
-<h3>What I Did</h3>
+<h4>Implementation</h4>
 
 <p>
-I explored class-imbalance strategies by comparing unweighted, class-weighted, and oversampled approaches using out-of-fold predictions.
-</p>
-
-<p>
-I evaluated decision thresholds based on the simulated cost of false negatives and false positives, while respecting the maximum review capacity of 12% per period.
+I evaluated unweighted, class-weighted, and oversampled modeling approaches using out-of-fold predictions. I then examined decision thresholds under different simulated error-cost assumptions.
 </p>
 
 <p>
-The cost assumptions were:
+The main policy experiment assigned a cost of 10 units to a false negative and 1 unit to a false positive, while limiting review selections to 12% of applications per period.
 </p>
 
-<ul>
-  <li>False Negative (FN): 10 loss units.</li>
-  <li>False Positive (FP): 1 loss unit.</li>
-  <li>Maximum review capacity: 12% per period.</li>
-</ul>
-
-<h3>Selected Weighted-Model Policy</h3>
+<h4>Selected Policy Results</h4>
 
 <table>
   <tr>
@@ -293,10 +288,6 @@ The cost assumptions were:
     <td>526</td>
   </tr>
   <tr>
-    <td>Simulated Loss</td>
-    <td>2,639 units</td>
-  </tr>
-  <tr>
     <td>Recall</td>
     <td>0.4089</td>
   </tr>
@@ -304,69 +295,73 @@ The cost assumptions were:
     <td>Precision</td>
     <td>0.2985</td>
   </tr>
+  <tr>
+    <td>Simulated Cost</td>
+    <td>2,639 units</td>
+  </tr>
 </table>
 
+<h4>Results &amp; Interpretation</h4>
+
 <p>
-I also evaluated alternative error-cost assumptions and examined descriptive regional false-positive-rate differences.
+The experiment demonstrated that the threshold with the strongest classification metrics is not necessarily the most practical decision threshold. Error costs and available review capacity must also be considered.
 </p>
 
 <p>
-<strong>Finding:</strong> Threshold selection must consider both classification errors and the available review capacity. The selected Lab 3 threshold belongs to this weighted-model experiment and is not the final Lab 5 threshold.
+I additionally examined alternative false-negative costs and descriptive regional false-positive-rate differences. The selected threshold of 0.658347 belongs to the Lab 03 weighted-model experiment and is separate from the final threshold selected in Lab 05.
 </p>
 
 <p align="center">
-  <img src="assets/lab3_cost_threshold.png" alt="Lab 3 Cost-Sensitive Threshold Analysis" width="850">
+  <img src="assets/lab3_cost_threshold.png" alt="Lab 3 cost-sensitive threshold analysis" width="780">
 </p>
 
 <hr>
 
-<h2>Lab 04 — Model Interpretability, Calibration and Stability</h2>
+<h3>Lab 04 — Explainability &amp; Calibration</h3>
 
 <p>
-  <a href="https://colab.research.google.com/github/nfsh46655-jpg/Shahad-Advanced-Machine-Learning-Methods-Tamweel-Lite-211/blob/main/notebooks/04_explain_calibrate.ipynb">
-    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open Lab 4 in Colab">
-  </a>
+<strong>Objective:</strong> Understand model predictions, identify influential features, and evaluate the reliability of predicted probabilities.
 </p>
 
-<h3>What I Did</h3>
+<h4>Implementation</h4>
 
 <p>
-I analyzed model behavior using TreeSHAP and held-out permutation importance. I examined global feature contributions and local explanations, while distinguishing model associations from causal relationships.
+I applied TreeSHAP to examine global and local model explanations and used held-out permutation importance to measure the influence of predictors on Average Precision.
 </p>
 
 <p>
-I interpreted SHAP contributions in log-odds rather than treating them as additive changes in probability.
+SHAP contributions were interpreted in log-odds for the weighted tree model. These explanations describe statistical model behavior rather than causal relationships.
 </p>
 
-<h3>Permutation Importance</h3>
-
-<p>
-The largest decreases in held-out Average Precision were associated with:
-</p>
+<h4>Feature Importance</h4>
 
 <table>
   <tr>
     <th>Feature</th>
-    <th>AP Decrease</th>
+    <th>Decrease in Average Precision</th>
   </tr>
   <tr>
-    <td>bureau_score</td>
-    <td>0.1270</td>
+    <td><code>bureau_score</code></td>
+    <td><strong>0.1270</strong></td>
   </tr>
   <tr>
-    <td>dti</td>
+    <td><code>dti</code></td>
     <td>0.0690</td>
   </tr>
 </table>
 
-<p align="center">
-  <img src="assets/lab4_shap.png" alt="Lab 4 SHAP Interpretability Analysis" width="850">
+<p>
+Bureau score and debt-to-income ratio showed the largest held-out permutation effects among the reported features.
 </p>
 
-<h3>Probability Calibration</h3>
+<p align="center">
+  <img src="assets/lab4_shap.png" alt="Lab 4 SHAP analysis" width="780">
+</p>
+
+<h4>Probability Calibration</h4>
 
 <p>
-I applied sigmoid calibration to the frozen weighted model and compared its probability quality against the raw model on 1,733 evaluation applications.
+I applied sigmoid calibration to the frozen weighted model and evaluated probability quality on 1,733 applications.
 </p>
 
 <table>
@@ -392,49 +387,39 @@ I applied sigmoid calibration to the frozen weighted model and compared its prob
   </tr>
 </table>
 
+<h4>Results &amp; Interpretation</h4>
+
 <p>
-<strong>Finding:</strong> Sigmoid calibration improved probability quality without changing Average Precision in this evaluation.
+Sigmoid calibration improved the quality of predicted probabilities, reducing both the Brier Score and Expected Calibration Error while preserving Average Precision in this evaluation.
 </p>
 
 <p>
-The notebook also reported <code>CAPACITY_REVIEW_REQUIRED</code> because the evaluation review-band scenario exceeded the available capacity. I retained this operational limitation instead of using the evaluation data to retune the policy.
+The review-band analysis reported <code>CAPACITY_REVIEW_REQUIRED</code>, indicating that the evaluated operational scenario exceeded the available review capacity. This limitation was documented rather than resolved by retuning against evaluation outcomes.
 </p>
 
 <p align="center">
-  <img src="assets/lab4_calibration.png" alt="Lab 4 Calibration Reliability Analysis" width="850">
+  <img src="assets/lab4_calibration.png" alt="Lab 4 calibration analysis" width="780">
 </p>
 
 <hr>
 
-<h2>Lab 05 — Final Model Selection, Ensembles and Challenge Predictions</h2>
+<h3>Lab 05 — Final Model Selection &amp; Challenge</h3>
 
 <p>
-  <a href="https://colab.research.google.com/github/nfsh46655-jpg/Shahad-Advanced-Machine-Learning-Methods-Tamweel-Lite-211/blob/main/notebooks/05_final_model.ipynb">
-    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open Lab 5 in Colab">
-  </a>
+<strong>Objective:</strong> Select the strongest justified model using forward-validation evidence, evaluate ensemble alternatives, and produce capacity-constrained challenge predictions.
 </p>
 
-<h3>What I Did</h3>
+<h4>Implementation</h4>
 
 <p>
-I performed the final model comparison using three forward validation periods and 2,155 live out-of-fold predictions.
+I compared Logistic Regression, XGBoost, and LightGBM against three ensemble approaches: equal-weight averaging, weighted averaging, and stacking.
 </p>
 
 <p>
-I compared Logistic Regression, XGBoost, and LightGBM against three ensemble approaches:
+The final evaluation used three forward validation periods and 2,155 out-of-fold predictions. Model selection considered Average Precision, performance stability, and whether the added complexity of ensembles provided sufficient benefit.
 </p>
 
-<ul>
-  <li>Equal-weight Averaging.</li>
-  <li>Weighted Averaging.</li>
-  <li>Stacking.</li>
-</ul>
-
-<p>
-I evaluated whether ensemble methods provided sufficient improvement to justify replacing a simpler individual model.
-</p>
-
-<h3>Final Model Comparison</h3>
+<h4>Final Model Comparison</h4>
 
 <table>
   <tr>
@@ -474,23 +459,29 @@ I evaluated whether ensemble methods provided sufficient improvement to justify 
   </tr>
 </table>
 
+<h4>Final Model Selection</h4>
+
 <p>
-<strong>Final Selection: Logistic Regression</strong>
+<strong>Logistic Regression was selected as the final model.</strong>
 </p>
 
 <p>
-I retained Logistic Regression as the final model because it achieved the highest mean out-of-fold Average Precision of 0.39166 among the evaluated candidates. The ensemble approaches did not satisfy the acceptance criteria needed to replace the individual model.
+It achieved the highest mean out-of-fold Average Precision of <strong>0.39166</strong>, with a fold standard deviation of 0.02981 and mean Brier Score of 0.06327.
+</p>
+
+<p>
+The ensemble approaches did not satisfy the acceptance criteria needed to replace the simpler individual model.
+</p>
+
+<p>
+Although XGBoost performed best in the preliminary Lab 01 Average Precision comparison, the final decision used a separate, more extensive validation protocol. The scores from these experiments should not be treated as directly comparable.
 </p>
 
 <p align="center">
-  <img src="assets/lab5_model_selection.png" alt="Lab 5 Final Model Comparison" width="850">
+  <img src="assets/lab5_model_selection.png" alt="Lab 5 final model comparison" width="780">
 </p>
 
-<h3>Final Decision Threshold</h3>
-
-<p>
-I selected an out-of-fold policy threshold of <strong>0.16892</strong>, flagging 245 out of 2,155 applications. The maximum per-period flagged fraction was 11.749%, within the 12% capacity constraint.
-</p>
+<h4>Decision Threshold</h4>
 
 <table>
   <tr>
@@ -498,8 +489,8 @@ I selected an out-of-fold policy threshold of <strong>0.16892</strong>, flagging
     <th>Result</th>
   </tr>
   <tr>
-    <td>OOF Threshold</td>
-    <td>0.16892</td>
+    <td>OOF Decision Threshold</td>
+    <td><strong>0.16892</strong></td>
   </tr>
   <tr>
     <td>Flagged OOF Applications</td>
@@ -514,19 +505,23 @@ I selected an out-of-fold policy threshold of <strong>0.16892</strong>, flagging
     <td>0.34286</td>
   </tr>
   <tr>
+    <td>Maximum Per-Period Flagged Fraction</td>
+    <td>11.749%</td>
+  </tr>
+  <tr>
     <td>Transported Final Threshold</td>
     <td>0.1222584314</td>
   </tr>
 </table>
 
-<h3>Challenge Predictions</h3>
-
 <p>
-After final fitting and calibration, I applied the transported decision threshold to the synthetic challenge batch containing 2,500 applications.
+The out-of-fold policy remained within the maximum review-capacity constraint of 12% per period.
 </p>
 
+<h4>Challenge Results</h4>
+
 <p>
-A total of 330 applications exceeded the transported threshold. To comply with the 12% review-capacity limit, I retained the 300 highest-priority applications and excluded 30 otherwise above-threshold cases.
+After final fitting and calibration, the transported threshold was applied to a synthetic challenge batch containing 2,500 applications.
 </p>
 
 <table>
@@ -539,57 +534,109 @@ A total of 330 applications exceeded the transported threshold. To comply with t
     <td>2,500</td>
   </tr>
   <tr>
+    <td>Applications Above Threshold</td>
+    <td>330</td>
+  </tr>
+  <tr>
     <td>Maximum Review Capacity</td>
     <td>300</td>
   </tr>
   <tr>
-    <td>Above-Threshold Applications</td>
-    <td>330</td>
-  </tr>
-  <tr>
-    <td>Final Flagged Applications</td>
+    <td>Selected for Review</td>
     <td><strong>300</strong></td>
   </tr>
   <tr>
-    <td>Excluded Above-Threshold Cases</td>
+    <td>Excluded Above-Threshold Applications</td>
     <td>30</td>
   </tr>
 </table>
 
+<p>
+To respect the 12% review-capacity limit, the 300 highest-priority applications were selected. Thirty additional above-threshold applications were excluded because the available capacity had been reached.
+</p>
+
 <p align="center">
-  <img src="assets/lab5_challenge_capacity.png" alt="Lab 5 Challenge Capacity Analysis" width="850">
+  <img src="assets/lab5_challenge_capacity.png" alt="Lab 5 challenge capacity analysis" width="780">
 </p>
 
 <p>
-<strong>Submission note:</strong> The final notebook reported <code>PROJECT_WORK_REQUIRED</code> because earlier evidence bundles and the presentation were not available in that execution environment. Final model selection was completed, but this status did not certify the full submission package as complete.
+<strong>Submission note:</strong> The final notebook reported <code>PROJECT_WORK_REQUIRED</code> because some required supporting reports and presentation materials were unavailable during execution. The model-selection results do not certify the entire submission package as complete.
 </p>
 
 <hr>
 
-<h2>Decision Policy and Human Oversight</h2>
+<h2>04. Final Results</h2>
+
+<table>
+  <tr>
+    <th>Metric</th>
+    <th>Outcome</th>
+  </tr>
+  <tr>
+    <td>Final Selected Model</td>
+    <td><strong>Logistic Regression</strong></td>
+  </tr>
+  <tr>
+    <td>Mean OOF Average Precision</td>
+    <td><strong>0.39166</strong></td>
+  </tr>
+  <tr>
+    <td>OOF AP Standard Deviation</td>
+    <td>0.02981</td>
+  </tr>
+  <tr>
+    <td>Mean OOF Brier Score</td>
+    <td>0.06327</td>
+  </tr>
+  <tr>
+    <td>OOF Policy Threshold</td>
+    <td>0.16892</td>
+  </tr>
+  <tr>
+    <td>Transported Threshold</td>
+    <td>0.1222584314</td>
+  </tr>
+  <tr>
+    <td>Maximum Review Capacity</td>
+    <td>12%</td>
+  </tr>
+  <tr>
+    <td>Challenge Review Selections</td>
+    <td>300 / 2,500</td>
+  </tr>
+</table>
 
 <p>
-The project uses a risk-based review policy rather than an automated financing decision system.
-</p>
-
-<p>
-I evaluated false negatives at a simulated cost of 10 units and false positives at 1 unit, while applying review-capacity constraints.
-</p>
-
-<p>
-Decision thresholds were selected using designated policy or out-of-fold evidence rather than retrospectively optimizing against evaluation outcomes.
-</p>
-
-<p>
-A flagged application indicates a need for human review, not a confirmed default or an automatic financing rejection.
+The final model was selected based on forward-validation evidence and operational decision constraints rather than model complexity alone.
 </p>
 
 <hr>
 
-<h2>Repository Structure</h2>
+<h2>05. Decision Policy &amp; Human Oversight</h2>
+
+<p>
+Tamweel Lite is a risk-based decision-support project. It does not perform automatic financing approval or rejection.
+</p>
+
+<ul>
+  <li>Predicted risk scores prioritize applications for human review.</li>
+  <li>False negatives and false positives are evaluated using simulated costs.</li>
+  <li>Review selections must respect the 12% per-period capacity limit.</li>
+  <li>Decision thresholds are selected using designated policy or out-of-fold evidence.</li>
+  <li>Above-threshold applications may be excluded when capacity is exhausted.</li>
+  <li>Human oversight remains necessary for interpreting and acting on predictions.</li>
+</ul>
+
+<hr>
+
+<h2>06. Repository Structure</h2>
+
+<p>
+The following represents the intended submission structure. The actual repository contents should be verified before treating the project as fully submitted.
+</p>
 
 <pre>
-Shahad-Advanced-Machine-Learning-Methods-Tamweel-Lite-211/
+Advanced-Machine-Learning-Methods-Tamweel-Lite/
 |
 |-- README.md
 |
@@ -617,101 +664,74 @@ Shahad-Advanced-Machine-Learning-Methods-Tamweel-Lite-211/
 |   |-- Model Card
 |
 |-- submission.csv
-|
 |-- final_presentation.pdf
 </pre>
 
+<hr>
+
+<h2>07. How to Run</h2>
+
+<h3>Google Colab</h3>
+
+<ol>
+  <li>Open the project notebook using the Google Colab badge at the beginning of this README.</li>
+  <li>Start a fresh Python runtime.</li>
+  <li>Install or verify the dependencies required by the notebook.</li>
+  <li>Run the cells in their intended order.</li>
+  <li>Review the generated metrics, plots, and decision-policy results.</li>
+  <li>Export executed notebooks and required deliverables.</li>
+</ol>
+
 <p>
-<strong>Note:</strong> This structure represents the intended submission layout. The final Model Card, submission.csv, and final presentation must be uploaded and verified before the repository can be considered complete.
+<strong>Important:</strong> Preserve the intended temporal and customer-aware validation design. Do not replace it with random splitting or bypass integrity checks.
 </p>
 
 <hr>
 
-<h2>How to Run</h2>
-
-<h3>1. Open the Notebooks</h3>
-
-<p>
-Open the required notebook through GitHub or Google Colab using the links provided in each lab section.
-</p>
-
-<h3>2. Prepare the Environment</h3>
-
-<p>
-Start a fresh Google Colab CPU runtime and select:
-</p>
-
-<pre>Runtime &gt; Run all</pre>
-
-<h3>3. Verify Dependencies and Data</h3>
-
-<p>
-Follow the notebook's pinned dependency versions, checksum verification, and support-asset requirements. Do not bypass failed integrity checks.
-</p>
-
-<h3>4. Preserve the Validation Design</h3>
-
-<p>
-Maintain the intended time-based and customer-aware separation. Do not replace it with a random split.
-</p>
-
-<h3>5. Export the Results</h3>
-
-<p>
-Inspect the executed outputs, export the required reports and predictions, and download each completed notebook as an <code>.ipynb</code> file before uploading it to GitHub.
-</p>
-
-<p>
-The standard workflow is designed for free CPU execution without requiring a paid GPU, Google Drive mount, or GitHub authorization from Colab.
-</p>
-
-<hr>
-
-<h2>Interpretation and Limitations</h2>
+<h2>08. Limitations &amp; Responsible Use</h2>
 
 <ul>
-  <li>The financing dataset is synthetic and intended for educational use.</li>
-  <li>Results have not been validated for real-world lending decisions.</li>
-  <li>SHAP and permutation importance explain model behavior but do not establish causality or fairness.</li>
-  <li>Some evaluation data appeared earlier in the course and should not be described as a completely untouched final test.</li>
-  <li>Improved calibration does not necessarily improve ranking performance or satisfy review-capacity requirements.</li>
-  <li>Lab 4 reported CAPACITY_REVIEW_REQUIRED, indicating that additional operational capacity review was needed.</li>
-  <li>Regional false-positive-rate comparisons are descriptive audits of synthetic groups, not formal fairness certification.</li>
-  <li>Capacity constraints may prevent some above-threshold applications from being selected for review.</li>
-  <li>All risk predictions require appropriate human oversight.</li>
+  <li><strong>Synthetic dataset:</strong> The project uses simulated financing applications for educational purposes.</li>
+  <li><strong>Real-world validity:</strong> The models have not been validated for real lending decisions.</li>
+  <li><strong>Data leakage:</strong> Validation must respect chronological and customer-level separation.</li>
+  <li><strong>Interpretability:</strong> SHAP and permutation importance do not establish causal relationships or guarantee fairness.</li>
+  <li><strong>Calibration:</strong> Better probability calibration does not necessarily improve ranking performance or satisfy review capacity.</li>
+  <li><strong>Evaluation limitations:</strong> Some evaluation data appeared earlier in the course and should not be described as a completely untouched final test.</li>
+  <li><strong>Operational capacity:</strong> Capacity constraints may exclude some above-threshold applications.</li>
+  <li><strong>Fairness assessment:</strong> Descriptive regional error-rate comparisons do not constitute formal fairness certification.</li>
 </ul>
 
 <hr>
 
-<h2>Final Deliverables</h2>
+<h2>09. Submission Deliverables</h2>
 
 <p>
-The course submission requires:
+The complete course submission requires:
 </p>
 
 <ul>
-  <li>README.md</li>
-  <li>00_readiness_check.ipynb</li>
-  <li>01_baseline_boosting.ipynb</li>
-  <li>02_validation_tuning.ipynb</li>
-  <li>03_cost_sensitive_decision.ipynb</li>
-  <li>04_explain_calibrate.ipynb</li>
-  <li>05_final_model.ipynb</li>
-  <li>99_final_submission_check.ipynb</li>
+  <li><code>README.md</code></li>
+  <li><code>00_readiness_check.ipynb</code></li>
+  <li><code>01_baseline_boosting.ipynb</code></li>
+  <li><code>02_validation_tuning.ipynb</code></li>
+  <li><code>03_cost_sensitive_decision.ipynb</code></li>
+  <li><code>04_explain_calibrate.ipynb</code></li>
+  <li><code>05_final_model.ipynb</code></li>
+  <li><code>99_final_submission_check.ipynb</code></li>
   <li>Decision Card</li>
   <li>Interpretability Report</li>
   <li>Model Card</li>
-  <li>submission.csv</li>
-  <li>final_presentation.pdf</li>
+  <li><code>submission.csv</code></li>
+  <li><code>final_presentation.pdf</code></li>
 </ul>
 
 <p>
-This README documents the five executed project labs. It does not replace the required reports, executed submission checks, prediction file, or final presentation.
+This README documents the experimental work and reported results. It does not replace the required notebooks, reports, prediction file, or presentation.
 </p>
 
 <hr>
 
-<h2>Training Program and Acknowledgment</h2>
+<h2>10. Training &amp; Acknowledgments</h2>
 
 <p>
 This project was developed as part of <strong>SDA-DSC-211 — Advanced Machine Learning Methods</strong>, associated with <strong>SDAIA Academy</strong>.
@@ -719,12 +739,7 @@ This project was developed as part of <strong>SDA-DSC-211 — Advanced Machine L
 
 <p>
 <strong>Training Organization:</strong>
-<a href="https://sdaia.gov.sa/">Saudi Data & Artificial Intelligence Authority (SDAIA)</a>
-</p>
-
-<p>
-<strong>Course Materials:</strong>
-<a href="https://github.com/almiyead-rgb">SDAIA Academy Course Materials on GitHub</a>
+<a href="https://sdaia.gov.sa/">Saudi Data &amp; Artificial Intelligence Authority (SDAIA)</a>
 </p>
 
 <p>
@@ -732,12 +747,25 @@ This project was developed as part of <strong>SDA-DSC-211 — Advanced Machine L
 <a href="https://almiyead-rgb.github.io/advanced-machine-learning-methods-sda-dsc-211/#start">Advanced Machine Learning Methods — SDA-DSC-211</a>
 </p>
 
+<p>
+<strong>Course Materials:</strong>
+<a href="https://github.com/almiyead-rgb">Training Materials on GitHub</a>
+</p>
+
 <hr>
 
-<p align="center">
+<div align="center">
+
+<p>
   <strong>Developed by Shahad Mamdouh Abu Shaheen</strong>
-  <br>
-  SDAIA Academy | Advanced Machine Learning Methods
-  <br>
-  <a href="https://github.com/nfsh46655-jpg/Shahad-Advanced-Machine-Learning-Methods-Tamweel-Lite-211">View Project on GitHub</a>
 </p>
+
+<p>
+  SDAIA Academy | Advanced Machine Learning Methods
+</p>
+
+<p>
+  <a href="https://github.com/nfsh46655-jpg/Shahad-Advanced-Machine-Learning-Methods-Tamweel-Lite-211">View GitHub Repository</a>
+</p>
+
+</div>
