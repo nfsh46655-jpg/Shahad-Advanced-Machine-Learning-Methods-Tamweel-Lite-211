@@ -48,6 +48,12 @@ These results indicate that `bureau_score` and `dti` were important predictive f
 
 Feature importance describes model dependence, not a causal relationship between a feature and default.
 
+### Figure 1. Global Feature Importance
+
+![Permutation Importance](../tamweel_readme_images/assets/permutation_importance.png)
+
+*Figure 1. Global feature-importance analysis showing which input features contribute most strongly to predictive performance.*
+
 ### SHAP interpretation
 
 For a model explained in raw log-odds units, SHAP contributions are additive:
@@ -59,6 +65,12 @@ Positive contributions increase the model's raw predicted default risk relative 
 Correlated features can share predictive information, making their individual contributions sensitive to the explanation method and background data.
 
 The SHAP background should come from the training data, and the additivity check should be verified using the saved notebook output.
+
+### Figure 2. SHAP Global Summary
+
+![SHAP Beeswarm](../tamweel_readme_images/assets/shap_beeswarm.png)
+
+*Figure 2. SHAP beeswarm visualization illustrating the distribution and direction of feature contributions across the explained applications.*
 
 ### Local explanation
 
@@ -76,6 +88,12 @@ Up to three positive contributing factors may be reported, together with their S
 - Imputation status: Not yet verified
 
 These SHAP explanations refer to the underlying predictive model and must not automatically be interpreted as explanations of the calibrated probability.
+
+### Figure 3. Local SHAP Explanation
+
+![SHAP Waterfall](../tamweel_readme_images/assets/shap_waterfall.png)
+
+*Figure 3. SHAP waterfall visualization showing how individual feature contributions move the selected application's raw model prediction away from the reference value.*
 
 ## 3. Calibration Evidence
 
@@ -99,6 +117,12 @@ Average Precision remained unchanged, suggesting that the calibration transforma
 
 However, improved Brier Score and ECE do not establish perfect calibration.
 
+### Figure 4. Calibration Reliability Curve
+
+![Calibration Reliability Curve](../tamweel_readme_images/assets/reliability_curve.png)
+
+*Figure 4. Reliability diagram comparing predicted default probabilities with observed event frequencies before and after sigmoid calibration.*
+
 The final report must additionally record the evaluation sample size, number of positive outcomes, and the observed counts within each of the ten calibration bins.
 
 ## 4. Stability and Uncertainty
@@ -116,6 +140,12 @@ The following details must be verified from the notebook:
 - Metrics compared
 - Differences between evaluation periods
 - Whether the `bureau_score ±1` sensitivity test was performed
+
+### Figure 5. Bootstrap Stability Analysis
+
+![Bootstrap Stability Summary](../tamweel_readme_images/assets/stability_summary.png)
+
+*Figure 5. Stability diagnostics summarizing uncertainty in model-evaluation metrics under the notebook's resampling procedure.*
 
 Bootstrap intervals describe uncertainty in an estimated evaluation metric under the resampling procedure.
 
@@ -154,6 +184,12 @@ The diagnostic therefore indicated:
 **`CAPACITY_REVIEW_REQUIRED`**
 
 This status highlights an operational limitation. It should not be treated as a software execution error or silently changed into a passing result.
+
+### Figure 6. Threshold and Review-Capacity Diagnostics
+
+![Review Capacity Analysis](../tamweel_readme_images/assets/review_zone.png)
+
+*Figure 6. Near-threshold review diagnostics illustrating the relationship between decision boundaries, review candidates, and operational capacity.*
 
 A revised review policy would need to be developed and evaluated separately before claiming that the additional workload is operationally feasible.
 
@@ -196,7 +232,3 @@ Lab 04 demonstrates how predictive performance, interpretability, calibration, a
 The observed sigmoid calibration results improved probability-quality metrics without changing the reported Average Precision.
 
 Permutation importance highlighted `bureau_score` and `dti` as influential predictors.
-
-The review-capacity diagnostics also identified periods where additional near-threshold review workload exceeded capacity, emphasizing the need to distinguish predictive quality from operational feasibility.
-
-**Review status:** The reflection form previously returned `READY_FOR_REVIEW`, indicating that its required response fields were completed. This does not independently certify that all operational constraints or final submission requirements have been satisfied.
