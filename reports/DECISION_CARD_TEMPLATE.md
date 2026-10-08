@@ -35,6 +35,12 @@ The cleaned time/group validation experiment reported:
 
 The tuned experiment reported ROC-AUC of **0.7855** and Average Precision of **0.3133**, based on eight Optuna trials.
 
+### Figure 1. ROC and Precision–Recall Curves
+
+![ROC and Precision–Recall Curves](../tamweel_readme_images/assets/day3_roc_pr.png)
+
+*Figure 1. ROC and Precision–Recall curves supporting the evaluation of model discrimination and positive-class detection.*
+
 The exact OOF coverage, number of rows without OOF predictions, validation periods, and execution configuration should be confirmed from the saved Lab 03 notebook outputs before final submission.
 
 ## 3. Cost Function and Decision Threshold
@@ -62,6 +68,12 @@ The selected threshold from Lab 03 was:
 
 This threshold was selected while considering the simulated loss function and operational review capacity.
 
+### Figure 2. Cost-Sensitive Threshold Selection
+
+![Cost Curve](../tamweel_readme_images/assets/cost_curve.png)
+
+*Figure 2. Decision-threshold analysis illustrating the relationship between simulated error cost, threshold selection, and review constraints.*
+
 ## 4. Review Capacity and Decision Results
 
 The review capacity was limited to **12%** of eligible applications.
@@ -79,6 +91,12 @@ The reported Lab 03 results were:
 
 The selected policy identifies higher-risk applications for manual review while controlling the volume of flagged applications.
 
+### Figure 3. Review Capacity and Regional Analysis
+
+![Capacity and Regional Analysis](../tamweel_readme_images/assets/day3_capacity_regions.png)
+
+*Figure 3. Review-capacity diagnostics and regional performance comparisons, highlighting operational workload and potential differences across regions.*
+
 ## 5. Interpretation and Trade-offs
 
 The threshold reflects a trade-off between detecting applicants who may default and limiting unnecessary reviews.
@@ -95,6 +113,7 @@ The selected policy therefore considers both prediction quality and operational 
 - Error costs are educational assumptions rather than verified financial losses.
 - Predictive performance may change across time periods or populations.
 - A review flag is not an automated approval or rejection decision.
+- Regional performance differences require further evaluation before drawing fairness conclusions.
 - Further monitoring, fairness assessment, calibration, and operational validation would be necessary before any real-world use.
 
 ## 7. Final Decision
