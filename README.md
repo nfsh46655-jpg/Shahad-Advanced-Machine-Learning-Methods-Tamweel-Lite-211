@@ -3,9 +3,6 @@
 
 <h1>Advanced Machine Learning Methods-Tamweel Lite</h1>
 
-<p>
-An end-to-end machine learning capstone for predicting financing default risk, evaluating advanced classification models, explaining predictions, and optimizing review decisions under operational constraints.
-</p>
 
 <p>
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
