@@ -7,8 +7,6 @@
 <p>
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
 <img src="https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white" alt="Scikit-learn">
-<img src="https://img.shields.io/badge/XGBoost-EC6B23?style=flat-square" alt="XGBoost">
-<img src="https://img.shields.io/badge/LightGBM-2C8C4B?style=flat-square" alt="LightGBM">
 <img src="https://img.shields.io/badge/Explainable_AI-SHAP-7256BD?style=flat-square" alt="SHAP">
 <img src="https://img.shields.io/badge/SDAIA-Academy-008C87?style=flat-square" alt="SDAIA Academy">
 
