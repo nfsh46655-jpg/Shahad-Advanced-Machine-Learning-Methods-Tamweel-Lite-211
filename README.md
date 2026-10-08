@@ -10,10 +10,6 @@
 <img src="https://img.shields.io/badge/SDAIA-Academy-008C87?style=flat-square" alt="SDAIA Academy">
 </p>
 
-<p>
-<strong>Developer:</strong> Shahad Mamdouh Abu Shaheen<br>
-<strong>Project Type:</strong> Individual Capstone Project
-</p>
 
 <a href="https://colab.research.google.com/drive/1Cw8_A6PngwrjMEweEB4MoIC0d07aF6wV?usp=sharing">
 <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
