@@ -1,0 +1,15 @@
+{
+  "responses": {
+    "global_local": "The global explanations show which features influence the model most across the evaluation data, while the local explanation describes the drivers of one specific high-score application. Globally, bureau_score had the largest mean absolute SHAP value (0.9042), followed by dti (0.5437) and loan_amount_sar (0.3490).",
+    "output_units": "TreeSHAP explains the raw LightGBM margin in log-odds, not probability points. The explanation uses the fixed evaluation sample and the model's SHAP background, so SHAP contributions should not be interpreted directly as changes in probability.",
+    "reason_limits": "Local reason statements describe model associations for a specific application and should not be interpreted as causal explanations. Correlated features may share or redistribute importance, so an individual feature contribution should not be interpreted in isolation.",
+    "calibration_evidence": "Calibration was evaluated on the separate calibration period containing 584 applications, including 40 positive cases. The sigmoid calibrator was learned only from this calibration period and then evaluated on later data. The stability analysis showed a Brier-score change between -0.054177 and -0.037409, indicating lower Brier loss after calibration in the bootstrap samples.",
+    "stability": "The paired customer-cluster bootstrap used 200 customer-cluster replicates while keeping the fitted model and calibrator fixed. The 95% percentile interval for raw AP was 0.197442 to 0.337854, and calibrated AP had the same interval. The interval captures sampling variability in the evaluation customers, but it does not include uncertainty from refitting the model or recalibrating it.",
+    "review_capacity": "The selected raw threshold was 0.588195 and flagged 68 applications, with an overall capacity of 70. However, the near-threshold review zone increased the candidate review workload beyond period capacity. In 2024Q3, capacity was 100 and candidate review was 109; in 2024Q4, capacity was 107 and candidate review was 122. Therefore, the result was CAPACITY_REVIEW_REQUIRED."
+  },
+  "checkpoint": {
+    "status": "READY_FOR_REVIEW",
+    "missing": [],
+    "no_automatic_grade": true
+  }
+}
