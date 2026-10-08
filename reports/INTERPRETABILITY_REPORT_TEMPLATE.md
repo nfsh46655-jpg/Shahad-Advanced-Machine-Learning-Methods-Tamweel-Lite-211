@@ -1,307 +1,454 @@
 
-<article>
-  <h1>Tamweel Lite — Interpretability and Calibration Report</h1>
-  <p><strong>Course:</strong> Advanced Machine Learning Methods (SDA-DSC-211)</p>
-  <p><strong>Project:</strong> Tamweel Lite</p>
-  <p><strong>Lab:</strong> Day 04 — Explainability, Calibration and Review Policy</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tamweel Lite | Interpretability & Calibration Report</title>
+  <style>
+    * { box-sizing: border-box; }
 
-  <h2>1. Source, Model and Data Roles</h2>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+      color: #243247;
+      background: #f4f7fb;
+      margin: 0;
+      padding: 32px 16px;
+    }
 
-  <p>
-    This report documents the Day 04 interpretation and calibration
-    experiment. The prediction task is to estimate the probability
-    of default within 90 days after a financing application.
-    All data are synthetic and used for educational purposes.
+    main {
+      max-width: 960px;
+      margin: auto;
+      background: white;
+      padding: 48px;
+      border-radius: 14px;
+      box-shadow: 0 6px 25px rgba(0,0,0,.06);
+    }
+
+    h1 { color: #17365d; margin-bottom: 8px; }
+    h2 {
+      color: #17365d;
+      border-bottom: 2px solid #dbe5f0;
+      padding-bottom: 8px;
+      margin-top: 36px;
+    }
+    h3 { color: #315b86; }
+
+    .subtitle { color: #66788d; }
+    .notice {
+      background: #fff8e8;
+      border-left: 4px solid #d5a03c;
+      padding: 14px 18px;
+      margin: 20px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+    }
+    th, td {
+      border: 1px solid #dce4ed;
+      padding: 11px;
+      text-align: left;
+    }
+    th { background: #eaf1f9; color: #17365d; }
+
+    code {
+      background: #eef2f6;
+      padding: 3px 6px;
+      border-radius: 4px;
+    }
+
+    .footer {
+      border-top: 1px solid #dce4ed;
+      margin-top: 40px;
+      padding-top: 16px;
+      font-size: 13px;
+      color: #66788d;
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 22px; }
+      body { padding: 10px; }
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      main { box-shadow: none; padding: 0; }
+    }
+  </style>
+</head>
+
+<body>
+<main>
+
+  <h1>Tamweel Lite</h1>
+  <p class="subtitle">
+    Interpretability & Calibration Report<br>
+    Advanced Machine Learning Methods | SDA-DSC-211<br>
+    Lab 04 — Explainability, Calibration & Decision Review
   </p>
 
+  <h2>1. Project Overview</h2>
   <p>
-    <strong>Explanation source:</strong>
-    The exact LIVE or EDUCATIONAL_EXAMPLE setting must be confirmed
-    from the saved notebook output. Educational examples must not
-    be presented as results from a live experiment.
+    Tamweel Lite is an educational machine learning project
+    that predicts the probability of financing default within
+    90 days after an application.
+  </p>
+  <p>
+    This report examines model interpretability, probability
+    calibration, prediction stability, and operational review
+    capacity. All data are synthetic, and the predictions are
+    intended for educational review prioritization rather than
+    real financing approval or rejection.
   </p>
 
+  <h2>2. Model and Data Separation</h2>
   <p>
-    <strong>Model configuration:</strong>
-    The trained model and its exact hyperparameters must be copied
-    from the Day 04 execution record.
+    The experiment distinguishes four data roles:
   </p>
-
-  <table border="1" cellpadding="7">
-    <tr>
-      <th>Data role</th>
-      <th>Rows</th>
-      <th>Unique customers</th>
-      <th>Positive outcomes</th>
-    </tr>
-    <tr><td>Fit</td><td>Not verified</td><td>Not verified</td><td>Not verified</td></tr>
-    <tr><td>Calibration</td><td>Not verified</td><td>Not verified</td><td>Not verified</td></tr>
-    <tr><td>Policy</td><td>Not verified</td><td>Not verified</td><td>Not verified</td></tr>
-    <tr><td>Evaluation</td><td>Not verified</td><td>Not verified</td><td>Not verified</td></tr>
-  </table>
-
-  <p>
-    Fit, calibration, policy and evaluation data serve distinct
-    purposes. Validation must respect customer separation,
-    chronological ordering and 90-day outcome maturity.
-    Evaluation in Day 04 is not the final course challenge test.
-  </p>
-
-  <h2>2. Global and Local Interpretability</h2>
-
-  <p>
-    Three interpretation approaches are considered:
-  </p>
-
   <ul>
-    <li><strong>Gain:</strong> Measures a feature's contribution to improvements in tree splits.</li>
-    <li><strong>Permutation importance:</strong> Measures performance deterioration when a feature is shuffled.</li>
-    <li><strong>SHAP:</strong> Attributes individual model outputs to feature contributions.</li>
+    <li><strong>Fit:</strong> Training the predictive model.</li>
+    <li><strong>Calibration:</strong> Fitting the sigmoid calibrator.</li>
+    <li><strong>Policy:</strong> Selecting the decision threshold.</li>
+    <li><strong>Evaluation:</strong> Assessing the frozen model and policy.</li>
+  </ul>
+  <p>
+    Time-aware validation, customer separation, and maturity
+    of the 90-day target are required to reduce data leakage.
+    The evaluation in Lab 04 is not the final course test.
+  </p>
+
+  <div class="notice">
+    <strong>Notebook verification required:</strong>
+    Confirm the explanation source (LIVE or
+    EDUCATIONAL_EXAMPLE), model configuration, role-specific
+    row counts, customer counts, positive cases, and date
+    boundaries from the executed Lab 04 notebook.
+  </div>
+
+  <h2>3. Global Feature Importance</h2>
+  <p>
+    Three complementary explanation methods are considered:
+  </p>
+  <ul>
+    <li>
+      <strong>Gain:</strong> Measures feature contributions
+      to tree-based splitting improvements.
+    </li>
+    <li>
+      <strong>Permutation importance:</strong> Measures
+      performance deterioration when feature values
+      are shuffled.
+    </li>
+    <li>
+      <strong>SHAP:</strong> Estimates feature contributions
+      relative to a reference prediction.
+    </li>
   </ul>
 
-  <p>
-    The recorded permutation-importance experiment showed
-    the following decreases in Average Precision:
-  </p>
-
-  <table border="1" cellpadding="7">
-    <tr><th>Feature</th><th>AP decrease</th></tr>
-    <tr><td>bureau_score</td><td>0.1270</td></tr>
-    <tr><td>dti</td><td>0.0690</td></tr>
+  <h3>Permutation Importance Results</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Average Precision Decrease</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>bureau_score</td><td>0.1270</td></tr>
+      <tr><td>dti</td><td>0.0690</td></tr>
+    </tbody>
   </table>
 
   <p>
-    These results indicate that bureau_score and debt-to-income
-    ratio were influential for the evaluated model.
-    Feature importance does not establish causation.
-    Correlated features can share or redistribute importance.
+    Bureau score and debt-to-income ratio were influential
+    predictors in the evaluated model. These results indicate
+    model dependence, not causal effects.
   </p>
 
+  <h2>4. SHAP Explanations</h2>
   <p>
-    For a binary classifier explained on the raw margin,
-    SHAP values are expressed in log-odds units.
-    The local consistency check is:
+    When SHAP is calculated on the model's raw log-odds output,
+    its contributions follow:
   </p>
-
-  <pre>raw_model_output ≈ base_value + sum(SHAP_values)</pre>
-
   <p>
-    The background distribution should come from training data,
-    not from the final evaluation sample.
-    Positive SHAP contributions increase the raw model output;
-    negative contributions decrease it.
+    <code>Raw model output = Base value + Sum(SHAP values)</code>
   </p>
-
   <p>
-    <strong>Local explanation:</strong>
-    The selected application, selection rule, up to three positive
-    contributing features, their values and missing-value
-    imputation status must be verified from the saved Day 04 output.
-    The actual observed outcome should not be used to select
-    or explain the case.
+    Positive SHAP values increase the raw predicted default
+    risk relative to the reference output, while negative
+    values decrease it.
   </p>
-
   <p>
-    Raw-model SHAP explanations must not be described as direct
-    explanations of the calibrated probability.
+    The background data should come from the training
+    partition. Correlated predictors may share predictive
+    information, so SHAP contributions must not be
+    interpreted as causal explanations.
   </p>
 
-  <h2>3. Calibration Evidence</h2>
-
+  <h3>Local Explanation</h3>
   <p>
-    Sigmoid calibration was evaluated to improve the relationship
-    between predicted probabilities and observed event frequencies.
-    The sigmoid calibrator must be fitted on calibration data
-    separate from the evaluation data.
+    A local explanation describes one application selected
+    through a documented rule that does not rely on knowing
+    the eventual outcome.
+  </p>
+  <p>
+    The report should identify no more than three positive
+    contributing factors, their SHAP values, and whether
+    any corresponding feature values were imputed.
+  </p>
+  <p>
+    Local SHAP values from the raw predictive model should
+    not be presented as direct explanations of the
+    calibrated probability.
   </p>
 
-  <table border="1" cellpadding="7">
-    <tr><th>Metric</th><th>Before calibration</th><th>After calibration</th></tr>
-    <tr><td>Brier score</td><td>0.113027</td><td>0.067112</td></tr>
-    <tr><td>ECE</td><td>0.146871</td><td>0.022486</td></tr>
-    <tr><td>Average Precision</td><td>0.258677</td><td>0.258677</td></tr>
-    <tr><td>Log-loss</td><td>Not verified</td><td>Not verified</td></tr>
-    <tr><td>ROC-AUC</td><td>Not verified</td><td>Not verified</td></tr>
+  <div class="notice">
+    <strong>To complete:</strong> Local application ID,
+    selection rule, up to three contributing factors,
+    SHAP values, imputation indicators, and the
+    SHAP additivity check.
+  </div>
+
+  <h2>5. Probability Calibration</h2>
+  <p>
+    Sigmoid calibration was used to improve the agreement
+    between predicted default probabilities and observed
+    event frequencies.
+  </p>
+  <p>
+    The calibrator must be fitted using the calibration
+    partition and evaluated on separate observations.
+  </p>
+
+  <h3>Calibration Metrics</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Before Calibration</th>
+        <th>After Calibration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Average Precision</td>
+        <td>0.258677</td>
+        <td>0.258677</td>
+      </tr>
+      <tr>
+        <td>Brier Score</td>
+        <td>0.113027</td>
+        <td>0.067112</td>
+      </tr>
+      <tr>
+        <td>Expected Calibration Error</td>
+        <td>0.146871</td>
+        <td>0.022486</td>
+      </tr>
+      <tr>
+        <td>Log-loss</td>
+        <td>Not verified</td>
+        <td>Not verified</td>
+      </tr>
+      <tr>
+        <td>ROC-AUC</td>
+        <td>Not verified</td>
+        <td>Not verified</td>
+      </tr>
+    </tbody>
   </table>
 
+  <h3>Calibration Interpretation</h3>
   <p>
-    The recorded Brier score decreased from 0.113027 to 0.067112,
-    while ECE decreased from 0.146871 to 0.022486.
-    Average Precision remained unchanged at 0.258677.
+    The Brier Score decreased from 0.113027 to 0.067112,
+    indicating improved probability accuracy.
+    Expected Calibration Error decreased from 0.146871
+    to 0.022486.
+  </p>
+  <p>
+    Average Precision remained at 0.258677.
+    These findings support improved calibration in the
+    evaluated sample but do not establish perfect
+    calibration or guarantee future performance.
   </p>
 
+  <div class="notice">
+    <strong>To complete:</strong> Evaluation sample size,
+    number of positive outcomes, log-loss, ROC-AUC,
+    and the observed counts in all ten calibration bins.
+  </div>
+
+  <h2>6. Stability and Bootstrap Analysis</h2>
   <p>
-    These results support improved probability calibration on
-    the evaluated sample without demonstrating improved ranking.
-    They do not prove perfect calibration or future performance.
+    Customer-level bootstrap resampling can be used
+    to examine the stability of evaluation metrics.
+  </p>
+  <p>
+    Paired comparisons should use the same sampled
+    customers for both predictions while keeping the
+    trained model and calibrator fixed.
+  </p>
+  <p>
+    Bootstrap intervals reflect sampling variability
+    under the chosen procedure. They are not confidence
+    intervals for an individual applicant's default
+    probability or guarantees of future results.
+  </p>
+  <p>
+    Differences across time periods and any
+    <code>bureau_score +/- 1</code> sensitivity experiment
+    should be documented using actual notebook outputs.
   </p>
 
-  <p>
-    <strong>Required calibration diagnostics:</strong>
-    The evaluation sample size, positive count and counts in
-    each of the ten probability bins must be inserted from
-    the saved notebook outputs.
-  </p>
+  <div class="notice">
+    <strong>To complete:</strong> Bootstrap interval bounds,
+    number of valid draws, paired metric differences,
+    period comparisons, and sensitivity-test results
+    if performed.
+  </div>
 
-  <h2>4. Stability and Its Limitations</h2>
-
+  <h2>7. Decision Threshold and Review Capacity</h2>
   <p>
-    Customer-level bootstrap resampling is used to assess
-    variability while accounting for repeated customer records.
-    The trained model and sigmoid calibrator should remain fixed
-    throughout the resampling procedure.
+    Applications are flagged using:
   </p>
+  <p><code>Flag for review if score &gt;= threshold</code></p>
 
   <p>
-    Before-and-after calibration metrics should be calculated
-    on the same bootstrap draw so that comparisons are paired.
-    The number of valid draws and the bootstrap interval
-    endpoints must be taken from the experiment outputs.
+    The operational review-capacity limit is
+    <strong>12% per period</strong>.
+    The near-threshold diagnostic margin is
+    <strong>+/- 0.02</strong>.
   </p>
-
   <p>
-    <strong>Valid bootstrap draws:</strong> Not verified.<br>
-    <strong>Bootstrap intervals:</strong> Not verified.<br>
-    <strong>Period-level differences:</strong> Not verified.<br>
-    <strong>bureau_score ±1 sensitivity test:</strong>
-    Execution and results not verified.
+    This margin identifies predictions near the decision
+    boundary. It is not a statistical confidence interval.
   </p>
 
-  <p>
-    Bootstrap intervals summarize uncertainty in the measured
-    sample-level performance. They do not guarantee future
-    performance and are not confidence intervals for the
-    default probability of an individual application.
-  </p>
-
-  <h2>5. Threshold and Review Region</h2>
-
-  <p>
-    The policy flags applications according to:
-  </p>
-
-  <pre>flag_for_review = score &gt;= threshold</pre>
-
-  <p>
-    The threshold is selected using the policy data, not
-    optimized after observing evaluation outcomes.
-    The raw threshold and its calibrated transported equivalent
-    must be confirmed from the Day 04 notebook.
-  </p>
-
-  <p>
-    <strong>Recorded threshold:</strong> 0.588195.
-    Its exact role as raw or transported threshold
-    must be confirmed from the saved output.
-  </p>
-
-  <p>
-    The review capacity is limited to 12% per period.
-    A diagnostic near-threshold region of ±0.02 was also examined.
-    This region is not a statistical confidence interval.
-  </p>
-
-  <table border="1" cellpadding="7">
-    <tr>
-      <th>Period</th>
-      <th>Near-threshold review candidates</th>
-      <th>Capacity</th>
-      <th>Status</th>
-    </tr>
-    <tr>
-      <td>2024 Q3</td>
-      <td>109</td>
-      <td>100</td>
-      <td>Capacity exceeded</td>
-    </tr>
-    <tr>
-      <td>2024 Q4</td>
-      <td>122</td>
-      <td>107</td>
-      <td>Capacity exceeded</td>
-    </tr>
+  <h3>Reported Capacity Diagnostics</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Measure</th>
+        <th>Reported Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Threshold</td><td>0.588195</td></tr>
+      <tr><td>Flagged applications</td><td>68</td></tr>
+      <tr><td>Overall capacity</td><td>70</td></tr>
+      <tr>
+        <td>2024 Q3 near-threshold candidates</td>
+        <td>109</td>
+      </tr>
+      <tr>
+        <td>2024 Q3 capacity</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td>2024 Q4 near-threshold candidates</td>
+        <td>122</td>
+      </tr>
+      <tr>
+        <td>2024 Q4 capacity</td>
+        <td>107</td>
+      </tr>
+    </tbody>
   </table>
 
+  <h3>Capacity Finding</h3>
   <p>
-    One recorded result contained 68 flagged applications
-    against an overall capacity of 70.
-    However, the expanded near-threshold review workload
-    exceeded the available capacity in the periods shown above.
+    The observed diagnostic returned
+    <code>CAPACITY_REVIEW_REQUIRED</code>.
+  </p>
+  <p>
+    The additional near-threshold review workload exceeded
+    the available capacity in two periods.
+    A revised operational policy would require separate
+    development and evaluation before being adopted.
+  </p>
+  <p>
+    The raw threshold, transported threshold, flagged
+    counts, near-threshold counts, and deduplicated union
+    totals should be confirmed from the notebook.
   </p>
 
+  <h2>8. Interpretation and Limitations</h2>
+  <ul>
+    <li>
+      Global explanations summarize model behavior
+      across observations; local explanations describe
+      one prediction.
+    </li>
+    <li>
+      Raw-output SHAP contributions are expressed in
+      log-odds, not calibrated probabilities.
+    </li>
+    <li>
+      Feature importance does not establish causation.
+    </li>
+    <li>
+      Calibration improvements are specific to the
+      evaluated data and metrics.
+    </li>
+    <li>
+      Bootstrap results cannot guarantee performance
+      under future population or economic changes.
+    </li>
+    <li>
+      Near-threshold review workload must be considered
+      alongside the standard review capacity.
+    </li>
+  </ul>
+
+  <h2>9. Evidence and Review Readiness</h2>
   <p>
-    The counts of flagged applications, near-threshold candidates
-    and their unique union must be documented separately to
-    avoid double-counting overlapping applications.
+    Supporting evidence should include the executed
+    Lab 04 notebook, explanation outputs, calibration
+    diagnostics, bootstrap summaries, and review-capacity
+    calculations.
+  </p>
+  <p>
+    A reflection status of <code>READY_FOR_REVIEW</code>
+    indicates that required reflection fields were
+    completed. It does not automatically certify that
+    every operational constraint has been satisfied.
   </p>
 
+  <h2>10. Conclusion</h2>
   <p>
-    The recorded status CAPACITY_REVIEW_REQUIRED indicates that
-    the proposed review region cannot be adopted unchanged
-    within the stated operational constraint.
+    Lab 04 illustrates how explainability, calibration,
+    uncertainty assessment, and operational review
+    capacity contribute to responsible model evaluation.
+  </p>
+  <p>
+    Reported sigmoid calibration improved the Brier
+    Score and Expected Calibration Error while Average
+    Precision remained unchanged.
+  </p>
+  <p>
+    Permutation importance highlighted bureau_score
+    and dti as influential features. The review-capacity
+    diagnostic also identified additional workload
+    beyond the available capacity in some periods.
+  </p>
+  <p>
+    The experiment remains educational and uses
+    synthetic financing data. All unverified details
+    must be completed from the actual executed notebook
+    before final submission.
   </p>
 
-  <p>
-    A revised review policy would require a new development
-    and evaluation process. The observed evaluation results
-    should not be retrospectively altered to make the policy
-    appear compliant.
-  </p>
+  <div class="footer">
+    Training-program reference:
+    <a href="https://github.com/SDAIAAcademy">
+      SDAIA Academy on GitHub
+    </a>
+  </div>
 
-  <h2>6. Reasoning and Supporting Files</h2>
-
-  <p>
-    <strong>Global versus local explanations:</strong>
-    Global explanations describe overall model behavior,
-    whereas local explanations describe contributions
-    for one selected application.
-  </p>
-
-  <p>
-    <strong>SHAP units:</strong>
-    SHAP contributions on the raw binary classification margin
-    are in log-odds units, not probability percentage points.
-  </p>
-
-  <p>
-    <strong>Limitations of reason codes:</strong>
-    Feature contributions describe model associations.
-    They do not establish causal explanations or justify
-    real financing decisions on their own.
-  </p>
-
-  <p>
-    <strong>Calibration evidence:</strong>
-    Brier score and ECE improved in the recorded experiment,
-    while Average Precision remained unchanged.
-  </p>
-
-  <p>
-    <strong>Stability limitations:</strong>
-    Bootstrap and sensitivity analyses describe observed
-    variability under their assumptions; they are not
-    guarantees about future applications.
-  </p>
-
-  <p>
-    <strong>Capacity implications:</strong>
-    Expanding review to near-threshold applications
-    can exceed the available review capacity.
-    This requires explicit policy reconsideration.
-  </p>
-
-  <p>
-    <strong>Supporting materials:</strong>
-    Include the executed Day 04 notebook, generated plots,
-    calibration diagnostics and the experiment artifact bundle.
-    Any EDUCATIONAL_EXAMPLE output must be clearly labeled
-    and must not be claimed as a personal experiment.
-  </p>
-
-  <p>
-    A READY_FOR_REVIEW reflection status means that required
-    reflection fields have been completed. It is not an
-    automatic grade or proof that all operational constraints
-    have been satisfied.
-  </p>
-</article>
+</main>
+</body>
+</html>
