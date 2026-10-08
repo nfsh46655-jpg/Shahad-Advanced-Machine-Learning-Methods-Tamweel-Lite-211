@@ -95,6 +95,18 @@ Six candidate modeling approaches were compared using mean OOF Average Precision
 | Weighted Averaging | 0.38942 | 0.06332 |
 | Stacking | 0.38314 | 0.06603 |
 
+### Figure 1. Model Diversity Analysis
+
+![Model Diversity Analysis](../tamweel_readme_images/assets/day5_diversity.png)
+
+*Figure 1. Diversity analysis comparing the behavior of candidate models and supporting the assessment of ensemble opportunities.*
+
+### Figure 2. Ensemble and Model Performance Comparison
+
+![Ensemble Model Comparison](../tamweel_readme_images/assets/day5_ensemble_comparison.png)
+
+*Figure 2. Performance comparison of individual models and ensemble approaches evaluated during final model selection.*
+
 ### Final Model Selection
 
 **Logistic Regression was selected as the final model** because it achieved the highest mean OOF Average Precision of 0.39166.
@@ -130,6 +142,12 @@ These results were measured on 836 calibration observations containing 78 positi
 
 Sigmoid calibration did not improve Brier Score, log-loss, or ECE on this partition. ROC-AUC and Average Precision remained unchanged.
 
+### Figure 3. Final Model Calibration Diagnostics
+
+![Final Model Calibration](../tamweel_readme_images/assets/day5_calibration_fit.png)
+
+*Figure 3. Calibration-fit diagnostics comparing raw and sigmoid-calibrated probabilities for the selected Logistic Regression model.*
+
 **Important limitation:** These calibration diagnostics were calculated on the same partition used to fit the calibrator. They are diagnostic measurements, not independent evidence that calibration will generalize to unseen data.
 
 The selected Logistic Regression model is also different from the LightGBM model explained in Lab 04. Therefore, Lab 04 SHAP explanations must not be presented as direct explanations of the final Logistic Regression model.
@@ -162,6 +180,12 @@ The raw OOF threshold was transported through the fitted sigmoid calibration map
 
 An application is eligible for review when its calibrated probability is greater than or equal to the threshold.
 
+### Figure 4. Cost-Sensitive Decision Policy and Regional Analysis
+
+![Decision Policy and Regional Analysis](../tamweel_readme_images/assets/day5_policy_regions.png)
+
+*Figure 4. Final-stage decision-policy diagnostics illustrating threshold selection and regional analysis under the simulated review framework.*
+
 ### Challenge Batch Results
 
 | Measure | Result |
@@ -178,6 +202,12 @@ Of the 2,500 challenge applications, 330 exceeded the calibrated decision thresh
 Because the operational review capacity was limited to 12%, only the 300 highest-ranked eligible applications were selected for review.
 
 The remaining 30 threshold-eligible applications were excluded by the capacity constraint.
+
+### Figure 5. Challenge Batch Review Capacity
+
+![Challenge Batch Capacity](../tamweel_readme_images/assets/day5_challenge_capacity.png)
+
+*Figure 5. Challenge-batch review-capacity analysis showing how the 12% operational limit constrains the number of applications selected for review.*
 
 The challenge batch does not provide observed default outcomes at scoring time. Therefore, realized precision, recall, and decision cost cannot be calculated for that batch.
 
@@ -271,7 +301,4 @@ Its findings remain limited to synthetic data and the recorded experimental sett
 
 ---
 
-**Training-program reference:** [SDAIA Academy on GitHub](https://github.com/SDAIAAcademy)
-
-<=د<div class="table-wrap">
-      
+**Training-program reference:** [SDAIA Academy on GitHub](https://github.com/SDAIAAcademy)      
